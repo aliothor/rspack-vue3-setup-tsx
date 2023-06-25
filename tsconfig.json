@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "jsx": "preserve",
+    "isolatedModules": true,
+    "typeRoots": ["node_modules/@types"]
+  },
+  "include": ["src/**/*"]
+}
