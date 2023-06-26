@@ -1,7 +1,7 @@
 import { FunctionalComponent, ref } from "vue";
-import vueLogo from "./assets/vue.svg";
 import "./App.css";
-import Test from './Test.vue'
+import Button from './Button.vue'
+import vueLogo from "./assets/vue.svg";
 
 export default {
 	name: "App",
@@ -29,7 +29,7 @@ export default {
 				<div class="card">
 					<CounterButton onClick={add} value={count.value} />
 				</div>
-				<Test></Test>
+				<Button></Button>
 			</div>
 		);
 	}

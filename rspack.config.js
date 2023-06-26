@@ -11,6 +11,9 @@ const config = {
       {
         test: /\.vue$/,
         loader: "vue-loader",
+        options: {
+          // experimentalInlineMatchResource: true
+        },
       },
       {
         test: /\.[j|t]sx?$/,
@@ -19,7 +22,16 @@ const config = {
             loader: "babel-loader",
             options: {
               plugins: ["@vue/babel-plugin-jsx"],
-              presets: ["@babel/preset-typescript"],
+              // presets: ["@babel/preset-typescript"]
+              presets: [
+                [
+                  "@babel/preset-typescript",
+                  {
+                    allExtensions: true,
+                    isTSX: true,
+                  },
+                ],
+              ],
             },
           },
         ],
@@ -43,4 +55,5 @@ const config = {
   },
   plugins: [new VueLoaderPlugin()],
 };
+
 module.exports = config;
