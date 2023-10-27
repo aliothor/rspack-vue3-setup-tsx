@@ -1,10 +1,15 @@
+// @ts-check
+
 const { VueLoaderPlugin } = require("vue-loader");
 
 /** @type {import('@rspack/cli').Configuration} */
 const config = {
   context: __dirname,
   entry: {
-    main: "./src/main.tsx",
+    main: "./src/main.ts",
+  },
+  output: {
+    clean: true
   },
   module: {
     rules: [
@@ -12,7 +17,7 @@ const config = {
         test: /\.vue$/,
         loader: "vue-loader",
         options: {
-          // experimentalInlineMatchResource: true
+          experimentalInlineMatchResource: true
         },
       },
       {
@@ -21,19 +26,15 @@ const config = {
           {
             loader: "babel-loader",
             options: {
-              plugins: ["@vue/babel-plugin-jsx"],
-              // presets: ["@babel/preset-typescript"]
               presets: [
                 [
                   "@babel/preset-typescript",
-                  {
-                    allExtensions: true,
-                    isTSX: true,
-                  },
-                ],
+                  { allExtensions: true, isTSX: true }
+                ]
               ],
-            },
-          },
+              plugins: ["@vue/babel-plugin-jsx"]
+            }
+          }
         ],
       },
       {
@@ -42,7 +43,11 @@ const config = {
       },
     ],
   },
+  mode: "production",
+  target: "web",
+  devtool: false,
   builtins: {
+    progress: true,
     html: [
       {
         template: "./index.html",
